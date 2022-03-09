@@ -18,5 +18,8 @@
   "homepage": "https://github.com/pdhende/team-profile-generator#readme",
   "devDependencies": {
     "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.1"
   }
 }
