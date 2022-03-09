@@ -19,7 +19,7 @@ describe('employee', () => {
         });
     });
 
-    // Test 2 : Check if function getId() returns Id of employee
+    // Test 3 : Check if function getId() returns Id of employee
     describe('Get Id', () => {
         it("should return the id of the employee", () => {
             let empId = emp.getId();
@@ -27,7 +27,7 @@ describe('employee', () => {
         });
     });
 
-    // Test 3 : Check if function getEmail() returns email of employee
+    // Test 4 : Check if function getEmail() returns email of employee
     describe('Get email', () => {
         it("should return the email of the employee", () => {
             let empEmail = emp.getEmail();
@@ -35,7 +35,7 @@ describe('employee', () => {
         });
     });
 
-    // Test 4 : Check if function getRole() returns role of employee
+    // Test 5 : Check if function getRole() returns role of employee
     describe('Get role', () => {
         it("should return the role of the employee", () => {
             let empRole = emp.getRole();
