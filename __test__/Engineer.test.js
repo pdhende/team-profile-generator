@@ -9,4 +9,20 @@ describe('engineer', () => {
             expect(empEngineer).toEqual({name: 'John', id: 1, email: 'john@test.com', github: 'johnGit'});
         });
     });
+
+    // Test 2: Check if function getGithub returns github username of employee
+    describe('Get github', () => {
+        it("should return the github username of employee",() => {
+            let empGithub = empEngineer.getGithub();
+            expect(empGithub).toEqual('johnGit');
+        });
+    });
+
+    // Test 3: Check if function getRole is overriden and returns 'Engineer'
+    describe('Get role',() => {
+        it("should return the role as Engineer", () => {
+            let empRole = empEngineer.getRole();
+            expect(empRole).toEqual('Engineer');
+        });
+    });
 });
