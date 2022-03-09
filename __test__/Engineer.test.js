@@ -10,7 +10,7 @@ describe('engineer', () => {
         });
     });
 
-    // Test 2: Check if function getGithub returns github username of employee
+    // Test 2: Check if function getGithub returns github username of engineer
     describe('Get github', () => {
         it("should return the github username of employee",() => {
             let empGithub = empEngineer.getGithub();
