@@ -63,13 +63,13 @@ function askCommonQues() {
     inquirer.prompt(commonQues).then((answers) => {
         let questionSet;
         if(answers.teamMember === "Engineer") {
-            questionSet = 'engineerQues';
-            console.log(questionSet);
+            questionSet = engineerQues;
+            // console.log(questionSet);
             askEmpDetails(questionSet);
         }
         else if(answers.teamMember === "Intern") {
             questionSet = 'internQues';
-            console.log(questionSet);
+            // console.log(questionSet);
             askEmpDetails(questionSet);
         }
         else {
@@ -79,8 +79,8 @@ function askCommonQues() {
 }
 
 function askEmpDetails(questionSet) {
-    console.log(questionSet);
-    inquirer.prompt(engineerQues).then((answers) => {
+    // console.log(questionSet);
+    inquirer.prompt(questionSet).then((answers) => {
         askCommonQues();
     });
 }
