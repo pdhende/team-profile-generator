@@ -1,6 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const manager = require('./lib/Manager');
 const { inherits } = require('util');
+const Manager = require('./lib/Manager');
 
 // Array of questions to get manager info
 const managerQues = [
@@ -111,6 +113,12 @@ function askEmpDetails(questionSet) {
 // Function to start questions for Manager info
 function init() {
     inquirer.prompt(managerQues).then((answers) => {
+        let name = answers.managerName;
+        let id = answers.managerId;
+        let email = answers.managerEmail;
+        let officeNum = answers.managerOfficeNo;
+        const managerDet = new Manager(name, id, email, officeNum);
+        console.log(managerDet);
         askCommonQues();
     });
 }
