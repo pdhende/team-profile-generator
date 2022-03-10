@@ -59,17 +59,40 @@ const engineerQues = [
     }
 ];
 
+// Array of questions to get intern info
+const internQues = [
+    {
+        type: "input",
+        name: "internName",
+        message: `What is the intern's name?`,
+    },
+    {
+        type: "number",
+        name: "internId",
+        message: `What is the intern's Id?`,
+    },
+    {
+        type: "input",
+        name: "internEmail",
+        message: `What is the intern's email?`,
+    },
+    {
+        type: "input",
+        name: "internSchool",
+        message: `What is the intern's school name?`,
+    }
+];
+
+// Function to ask if user wants to add more questions
 function askCommonQues() {
     inquirer.prompt(commonQues).then((answers) => {
         let questionSet;
         if(answers.teamMember === "Engineer") {
             questionSet = engineerQues;
-            // console.log(questionSet);
             askEmpDetails(questionSet);
         }
         else if(answers.teamMember === "Intern") {
-            questionSet = 'internQues';
-            // console.log(questionSet);
+            questionSet = internQues;
             askEmpDetails(questionSet);
         }
         else {
@@ -78,16 +101,17 @@ function askCommonQues() {
     });
 }
 
+// Function to prompt questions based on 'Engineer' or 'Intern'
 function askEmpDetails(questionSet) {
-    // console.log(questionSet);
     inquirer.prompt(questionSet).then((answers) => {
         askCommonQues();
     });
 }
 
+// Function to start questions for Manager info
 function init() {
-        inquirer.prompt(managerQues).then((answers) => {
-            askCommonQues();
+    inquirer.prompt(managerQues).then((answers) => {
+        askCommonQues();
     });
 }
 
