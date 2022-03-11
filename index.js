@@ -1,8 +1,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const manager = require('./lib/Manager');
+const engineer = require('./lib/Engineer');
 const { inherits } = require('util');
-const Manager = require('./lib/Manager');
+
+// Varibale declaration
+const engArr = [];
 
 // Array of questions to get manager info
 const managerQues = [
@@ -85,17 +88,32 @@ const internQues = [
     }
 ];
 
+// Function to start questions for Manager info
+function init() {
+    inquirer.prompt(managerQues).then((answers) => {
+        let name = answers.managerName;
+        let id = answers.managerId;
+        let email = answers.managerEmail;
+        let officeNum = answers.managerOfficeNo;
+        // create a manager object with above details
+        const managerDet = new manager(name, id, email, officeNum);
+        console.log(managerDet);
+        addMemberQ();
+    });
+}
+
 // Function to ask if user wants to add more questions
-function askCommonQues() {
+function addMemberQ() {
     inquirer.prompt(commonQues).then((answers) => {
         let questionSet;
-        if(answers.teamMember === "Engineer") {
+        let memberType = answers.teamMember;
+        if(memberType === "Engineer") {
             questionSet = engineerQues;
-            askEmpDetails(questionSet);
+            askEmpDetails(memberType, questionSet);
         }
-        else if(answers.teamMember === "Intern") {
+        else if(memberType === "Intern") {
             questionSet = internQues;
-            askEmpDetails(questionSet);
+            askEmpDetails(memberType, questionSet);
         }
         else {
             console.log("Team members added succesfully!");
@@ -104,23 +122,22 @@ function askCommonQues() {
 }
 
 // Function to prompt questions based on 'Engineer' or 'Intern'
-function askEmpDetails(questionSet) {
+function askEmpDetails(memberType, questionSet) {
     inquirer.prompt(questionSet).then((answers) => {
-        askCommonQues();
+        if(memberType === "Engineer") {
+            let name = answers.engName;
+            let id = answers.engId;
+            let email = answers.engEmail;
+            let gitHub = answers.engGithub;
+            
+            // Add the engineer details to an array of objects
+            const newEngDet = new engineer(name, id, email, gitHub);
+            engArr.push(newEngDet);
+            console.log(engArr);
+        }
+        addMemberQ();
     });
 }
 
-// Function to start questions for Manager info
-function init() {
-    inquirer.prompt(managerQues).then((answers) => {
-        let name = answers.managerName;
-        let id = answers.managerId;
-        let email = answers.managerEmail;
-        let officeNum = answers.managerOfficeNo;
-        const managerDet = new Manager(name, id, email, officeNum);
-        console.log(managerDet);
-        askCommonQues();
-    });
-}
-
+// Call function to begin question prompts
 init();
