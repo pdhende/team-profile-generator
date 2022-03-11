@@ -3,9 +3,11 @@ const inquirer = require('inquirer');
 const manager = require('./lib/Manager');
 const engineer = require('./lib/Engineer');
 const intern = require('./lib/Intern');
+const createTeam = require('./team');
 const { inherits } = require('util');
 
 // Varibale declaration
+var managerDet;
 const engArr = [];
 const internArr = [];
 
@@ -98,7 +100,7 @@ function init() {
         let email = answers.managerEmail;
         let officeNum = answers.managerOfficeNo;
         // create a manager object with above details
-        const managerDet = new manager(name, id, email, officeNum);
+        managerDet = new manager(name, id, email, officeNum);
         console.log(managerDet);
         addMemberQ();
     });
@@ -119,6 +121,8 @@ function addMemberQ() {
         }
         else {
             console.log("Team members added succesfully!");
+            module.exports = {managerDet, engArr, internArr};
+            createTeam();
         }
     });
 }
