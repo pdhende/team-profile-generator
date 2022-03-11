@@ -2,10 +2,12 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const manager = require('./lib/Manager');
 const engineer = require('./lib/Engineer');
+const intern = require('./lib/Intern');
 const { inherits } = require('util');
 
 // Varibale declaration
 const engArr = [];
+const internArr = [];
 
 // Array of questions to get manager info
 const managerQues = [
@@ -134,6 +136,17 @@ function askEmpDetails(memberType, questionSet) {
             const newEngDet = new engineer(name, id, email, gitHub);
             engArr.push(newEngDet);
             console.log(engArr);
+        }
+        else {
+            let name = answers.internName;
+            let id = answers.internId;
+            let email = answers.internEmail;
+            let school = answers.internSchool;
+            
+            // Add the intern details to an array of objects
+            const newIntDet = new intern(name, id, email, school);
+            internArr.push(newIntDet);
+            console.log(internArr);
         }
         addMemberQ();
     });
