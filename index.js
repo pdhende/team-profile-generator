@@ -121,8 +121,12 @@ function addMemberQ() {
         }
         else {
             console.log("Team members added succesfully!");
-            module.exports = {managerDet, engArr, internArr};
-            createTeam();
+            // module.exports = {managerDet, engArr, internArr};
+            // console.log(managerDet);
+            // console.log(engArr);
+            // console.log(internArr);
+            // console.log(managerDet + '\n'+ engArr +'\n' + internArr);
+            createTeam(managerDet, engArr, internArr);
         }
     });
 }

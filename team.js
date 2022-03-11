@@ -1,14 +1,11 @@
 // Function to generate the HTML page
-const empDetails = require('./index');
-console.log(empDetails);
 
-// const mgrDet = managerDet;
-// const engArrVal = engArr;
-// const internArrVal = internArr;
-
-function createTeamPage() {
-    // console.log(mgrDet + '\n'+ engArrVal +'\n' + internArrVal);
+function createTeamPage(managerDet, engArr, internArr) {
+    // console.log(managerDet + '\n'+ engArr +'\n' + internArr);
+    console.log(managerDet.name);
     console.log("in create team");
+
+    // var HTML = ;
 }
 
 module.exports = createTeamPage;
