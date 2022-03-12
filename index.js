@@ -101,7 +101,6 @@ function init() {
         let officeNum = answers.managerOfficeNo;
         // create a manager object with above details
         managerDet = new manager(name, id, email, officeNum);
-        console.log(managerDet);
         addMemberQ();
     });
 }
@@ -121,12 +120,6 @@ function addMemberQ() {
         }
         else {
             console.log("Team members added succesfully!");
-            // module.exports = {managerDet, engArr, internArr};
-            // console.log(managerDet);
-            // console.log(engArr);
-            // console.log(internArr);
-            // console.log(managerDet + '\n'+ engArr +'\n' + internArr);
-
             createTeam(managerDet, engArr, internArr);
         }
     });
@@ -144,7 +137,6 @@ function askEmpDetails(memberType, questionSet) {
             // Add the engineer details to an array of objects
             const newEngDet = new engineer(name, id, email, gitHub);
             engArr.push(newEngDet);
-            console.log(engArr);
         }
         else {
             let name = answers.internName;
@@ -155,7 +147,6 @@ function askEmpDetails(memberType, questionSet) {
             // Add the intern details to an array of objects
             const newIntDet = new intern(name, id, email, school);
             internArr.push(newIntDet);
-            console.log(internArr);
         }
         addMemberQ();
     });

@@ -3,7 +3,6 @@
 const fs = require('fs');
 
 function createTeamPage(managerDet, engArr, internArr) {
-    console.log(managerDet.name);
 
     let html1 = `<!DOCTYPE html>
     <html lang="en">
@@ -14,7 +13,6 @@ function createTeamPage(managerDet, engArr, internArr) {
       <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
         rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-      <link rel="stylesheet" href="./assets/css/jass.css" />
       <link rel="stylesheet" href="./dist/style.css" />
     </head>
     
@@ -27,11 +25,11 @@ function createTeamPage(managerDet, engArr, internArr) {
         </header>
     
         <div class="container-fluid">
-            <div class="row">`;
+            <div class="row m-2">`;
 
     // Code to loop through objects and create cards
     let html2 = '';
-    html2 = `<div class="card" style="width: 300px;">
+    html2 = `<div class="card d-flex justify-content-center" style="width: 300px;">
                     <div class="card-body">
                         <h5 class="card-title">${managerDet.name}</h5>
                         <p class="card-text">Manager</p>
@@ -39,11 +37,45 @@ function createTeamPage(managerDet, engArr, internArr) {
                     <div class="p-2">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Id: ${managerDet.id}</li>
-                            <li class="list-group-item">Email: ${managerDet.email}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${managerDet.email}">${managerDet.email}</a></li>
                             <li class="list-group-item">Office Number: ${managerDet.officeNumber}</li>
                         </ul>
                     </div>
                 </div>`;
+    
+    // Create cards to display all engineers details
+    engArr.forEach(engObj => {
+        html2 = html2 + `<div class="card d-flex justify-content-center" style="width: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${engObj.name}</h5>
+                        <p class="card-text">Engineer</p>
+                    </div>
+                    <div class="p-2">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Id: ${engObj.id}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${engObj.email}">${engObj.email}</a></li>
+                            <li class="list-group-item">GitHub: <a href="https://github.com/${engObj.github}" target="_blank">${engObj.github}</a></li>
+                        </ul>
+                    </div>
+                </div>`;
+    });
+
+    // Create cards to display all interns details
+    internArr.forEach(internObj => {
+        html2 = html2 + `<div class="card d-flex justify-content-center" style="width: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${internObj.name}</h5>
+                        <p class="card-text">Intern</p>
+                    </div>
+                    <div class="p-2">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Id: ${internObj.id}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${internObj.email}">${internObj.email}</a></li>
+                            <li class="list-group-item">School: ${internObj.school}</li>
+                        </ul>
+                    </div>
+                </div>`;
+    });
     
     let html3 =         
         `</div>
@@ -54,8 +86,14 @@ function createTeamPage(managerDet, engArr, internArr) {
 </body>
 </html>`;
 
+    // Concatenate the strings to build the HTML page
     const HTMLPage = html1 + html2 + html3;
-    console.log(HTMLPage);  
+
+    fs.writeFile('./dist/index.html', HTMLPage, (err) =>
+      err ? console.log(err) : console.log('Successfully created index.html!')
+    );
+
+    // console.log(HTMLPage);  
 }
 
 
