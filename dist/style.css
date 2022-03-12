@@ -10,11 +10,21 @@ body {
 }
 
 header {
-    padding: 15px;
+    padding: 15px 15px 0px;
+    /* transform: translate(10px, 30px); */
 }
 
 h1 {
     color: white;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 .row-custom {
@@ -26,9 +36,17 @@ h1 {
     padding: 10px;
     margin: 10px;
     border-radius: 30px 5px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    transition: .5s;
+    color: #6a7075;
 }
+
+.card-custom:hover {
+    transform:scale(1.1);
+  }
 
 .card-body-custom {
     border-radius: 25px 5px;
     background-color: #F4F1BB;
+    /* font-weight: bold; */
 }

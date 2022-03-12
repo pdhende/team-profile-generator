@@ -25,7 +25,7 @@ function createTeamPage(managerDet, engArr, internArr) {
         </header>
     
         <div class="container-fluid">
-            <div class="row row-custom m-2">`;
+            <div class="row row-custom">`;
 
     // Code to loop through objects and create cards
     let html2 = '';
