@@ -13,24 +13,24 @@ function createTeamPage(managerDet, engArr, internArr) {
       <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
         rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-      <link rel="stylesheet" href="./dist/style.css" />
+      <link rel="stylesheet" href="./style.css" />
     </head>
     
     <body>
     
-        <header class="jumbotron jumbotron-fluid custom-jumbotron">
+        <header>
             <div class="container text-center">
               <h1>The Team</h1>
             </div>
         </header>
     
         <div class="container-fluid">
-            <div class="row m-2">`;
+            <div class="row row-custom m-2">`;
 
     // Code to loop through objects and create cards
     let html2 = '';
-    html2 = `<div class="card d-flex justify-content-center" style="width: 300px;">
-                    <div class="card-body">
+    html2 = `<div class="card card-custom d-flex justify-content-center" style="width: 300px;">
+                    <div class="card-body card-body-custom">
                         <h5 class="card-title">${managerDet.name}</h5>
                         <p class="card-text">Manager</p>
                     </div>
@@ -45,8 +45,8 @@ function createTeamPage(managerDet, engArr, internArr) {
     
     // Create cards to display all engineers details
     engArr.forEach(engObj => {
-        html2 = html2 + `<div class="card d-flex justify-content-center" style="width: 300px;">
-                    <div class="card-body">
+        html2 = html2 + `<div class="card card-custom d-flex justify-content-center" style="width: 300px;">
+                    <div class="card-body card-body-custom">
                         <h5 class="card-title">${engObj.name}</h5>
                         <p class="card-text">Engineer</p>
                     </div>
@@ -62,8 +62,8 @@ function createTeamPage(managerDet, engArr, internArr) {
 
     // Create cards to display all interns details
     internArr.forEach(internObj => {
-        html2 = html2 + `<div class="card d-flex justify-content-center" style="width: 300px;">
-                    <div class="card-body">
+        html2 = html2 + `<div class="card card-custom d-flex justify-content-center" style="width: 300px;">
+                    <div class="card-body card-body-custom">
                         <h5 class="card-title">${internObj.name}</h5>
                         <p class="card-text">Intern</p>
                     </div>
