@@ -92,8 +92,6 @@ function createTeamPage(managerDet, engArr, internArr) {
     fs.writeFile('./dist/index.html', HTMLPage, (err) =>
       err ? console.log(err) : console.log('Successfully created index.html!')
     );
-
-    // console.log(HTMLPage);  
 }
 
 

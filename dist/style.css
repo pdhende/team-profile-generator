@@ -1,5 +1,6 @@
 html {
-    background-color: #E8EEF2;
+    /* background-color: #E8EEF2; */
+    background-color: #2c3e50;
 }
 
 body {
@@ -11,7 +12,6 @@ body {
 
 header {
     padding: 15px 15px 0px;
-    /* transform: translate(10px, 30px); */
 }
 
 h1 {
@@ -48,5 +48,4 @@ p {
 .card-body-custom {
     border-radius: 25px 5px;
     background-color: #F4F1BB;
-    /* font-weight: bold; */
 }
